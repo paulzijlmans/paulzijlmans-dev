@@ -1,12 +1,13 @@
+import cn from 'classnames';
 import Image from 'next/image';
 
 type Props = {
   title: string;
   src: string;
-  slug?: string;
+  fullWidth?: boolean;
 };
 
-const CoverImage = ({ title, src, slug }: Props) => {
+const CoverImage = ({ title, src, fullWidth }: Props) => {
   const image = (
     <Image
       src={src}
@@ -16,7 +17,15 @@ const CoverImage = ({ title, src, slug }: Props) => {
       priority
     />
   );
-  return <div className='inline-block w-full h-48 md:h-64 lg:h-96 relative'>{image}</div>;
+  return (
+    <div
+      className={cn('inline-block w-full h-48 md:h-64 lg:h-96 relative', {
+        'max-w-2xl': !fullWidth,
+      })}
+    >
+      {image}
+    </div>
+  );
 };
 
 export default CoverImage;
