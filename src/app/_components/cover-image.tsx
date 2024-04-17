@@ -16,7 +16,7 @@ const CoverImage = ({ title, src, slug }: Props) => {
       priority
     />
   );
-  return <div className='inline-block w-full  h-56 md:h-64 lg:h-96 relative'>{image}</div>;
+  return <div className='inline-block w-full h-48 md:h-64 lg:h-96 relative'>{image}</div>;
 };
 
 export default CoverImage;
