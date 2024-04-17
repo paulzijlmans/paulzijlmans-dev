@@ -2,6 +2,7 @@ import { PostBody } from '@/app/_components/post-body';
 import { PostHeader } from '@/app/_components/post-header';
 import { getAllPosts, getPostBySlug } from '@/lib/api';
 import markdownToHtml from '@/lib/markdownToHtml';
+import { siteMetadata } from '@/lib/site-metadata';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
@@ -14,15 +15,38 @@ export default async function Post({ params }: Params) {
 
   const content = await markdownToHtml(post.content || '');
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'NewsArticle',
+    headline: post.title,
+    description: post.excerpt,
+    image: post.ogImage.url,
+    datePublished: new Date(post.publishedAt).toISOString(),
+    dateModified: new Date(post.updatedAt ?? post.publishedAt).toISOString(),
+    author: [
+      {
+        '@type': 'Person',
+        name: siteMetadata.author,
+        url: siteMetadata.siteUrl,
+      },
+    ],
+  };
+
   return (
-    <article className='mb-32'>
-      <PostHeader
-        title={post.title}
-        coverImage={post.coverImage}
-        date={post.date}
+    <>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <PostBody content={content} />
-    </article>
+      <article className='mb-32'>
+        <PostHeader
+          title={post.title}
+          coverImage={post.coverImage}
+          date={post.publishedAt}
+        />
+        <PostBody content={content} />
+      </article>
+    </>
   );
 }
 
@@ -43,8 +67,23 @@ export function generateMetadata({ params }: Params): Metadata {
 
   return {
     title,
+    description: post.excerpt,
     openGraph: {
       title,
+      description: post.excerpt,
+      url: `${siteMetadata.siteUrl}/${params.slug}`,
+      siteName: siteMetadata.title,
+      locale: 'en_US',
+      type: 'article',
+      publishedTime: new Date(post.publishedAt).toISOString(),
+      modifiedTime: new Date(post.updatedAt ?? post.publishedAt).toISOString(),
+      images: [post.ogImage.url],
+      authors: siteMetadata.author,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
       images: [post.ogImage.url],
     },
   };

@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://paulzijlmans.dev
+
+# Sitemaps
+Sitemap: https://paulzijlmans.dev/sitemap.xml

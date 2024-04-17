@@ -2,10 +2,10 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import { Inter } from 'next/font/google';
 
 import { siteMetadata } from '@/lib/site-metadata';
+import cn from 'classnames';
+import Container from './_components/container';
 import Header from './_components/header';
 import './globals.css';
-import Container from './_components/container';
-import cn from 'classnames';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -54,12 +54,12 @@ export default function RootLayout({
       <body
         className={cn(
           inter.className,
-          'container mx-auto min-h-full bg-light dark:bg-dark box-border'
+          'container mx-auto bg-light dark:bg-dark box-border'
         )}
       >
         <Header />
         <Container>
-          <div className='min-h-screen'>{children}</div>
+          <main className='min-h-screen'>{children}</main>
         </Container>
         {/* <Footer /> */}
       </body>

@@ -1,7 +1,8 @@
 export type Post = {
   slug: string;
   title: string;
-  date: string;
+  publishedAt: string;
+  updatedAt?: string;
   coverImage: string;
   excerpt: string;
   ogImage: {
