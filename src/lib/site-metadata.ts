@@ -7,7 +7,7 @@ export const siteMetadata = {
     theme: 'system', // system, dark or light
     siteUrl: 'https://paulzijlmans.dev',
     siteLogo: '/logo.svg',
-    // socialBanner: '/social-banner.png', // add social banner in the public folder
+    socialBanner: '/social-banner.png',
     email: 'paulzijlmans@hotmail.com',
     github: 'https://github.com/paulzijlmans',
     twitter: 'https://twitter.com/paulzijlmans',

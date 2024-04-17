@@ -1,4 +1,3 @@
-import cn from 'classnames';
 import Image from 'next/image';
 
 type Props = {
@@ -12,15 +11,12 @@ const CoverImage = ({ title, src, slug }: Props) => {
     <Image
       src={src}
       alt={`Cover Image for ${title}`}
-      className={cn('shadow-sm w-full xl:max-w-screen-lg mx-auto h-auto', {
-        'hover:shadow-lg transition-shadow duration-200': slug,
-      })}
-      width={1300}
-      height={630}
+      className='object-cover mx-auto'
+      fill
       priority
     />
   );
-  return <div>{image}</div>;
+  return <div className='inline-block w-full  h-56 md:h-64 lg:h-96 relative'>{image}</div>;
 };
 
 export default CoverImage;
