@@ -5,6 +5,7 @@ import { siteMetadata } from '@/lib/site-metadata';
 import Header from './_components/header';
 import './globals.css';
 import Container from './_components/container';
+import cn from 'classnames';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -49,15 +50,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
-      <body className={inter.className}>
-        <div className='container mx-auto bg-light dark:bg-dark'>
-          <Header />
-          <Container>
-            <div className='min-h-screen'>{children}</div>
-          </Container>
-          {/* <Footer /> */}
-        </div>
+    <html lang='en' className='h-full'>
+      <body
+        className={cn(
+          inter.className,
+          'container mx-auto min-h-full bg-light dark:bg-dark box-border'
+        )}
+      >
+        <Header />
+        <Container>
+          <div className='min-h-screen'>{children}</div>
+        </Container>
+        {/* <Footer /> */}
       </body>
       <GoogleAnalytics gaId='G-STT7FP2FPK' />
     </html>

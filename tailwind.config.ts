@@ -19,7 +19,7 @@ const config: Config = {
         dark: "#090D1F",
         light: "#fff",
         gray: "#667085",
-        "light-gray": "#1b1b1b"
+        "light-gray": "#C0C5D0"
       },
       spacing: {
         28: "7rem",
