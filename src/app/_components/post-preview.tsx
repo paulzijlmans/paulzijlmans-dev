@@ -15,7 +15,7 @@ export function PostPreview({ title, coverImage, date, excerpt, slug }: Props) {
     <div>
       <Link as={`/posts/${slug}`} href='/posts/[slug]'>
         <div className='mb-5'>
-          <CoverImage slug={slug} title={title} src={coverImage} />
+          <CoverImage title={title} src={coverImage} />
         </div>
         <div className='text-sm mb-4 font-semibold text-accent-1'>
           <DateFormatter dateString={date} />
