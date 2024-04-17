@@ -18,7 +18,8 @@ const config: Config = {
         "accent-2": "#EAEAEA",
         dark: "#090D1F",
         light: "#fff",
-        gray: "#667085"
+        gray: "#667085",
+        "light-gray": "#1b1b1b"
       },
       spacing: {
         28: "7rem",
