@@ -1,17 +1,45 @@
-import Footer from "@/app/_components/footer";
-import { CMS_NAME, HOME_OG_IMAGE_URL } from "@/lib/constants";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { GoogleAnalytics } from '@next/third-parties/google';
+import { Inter } from 'next/font/google';
 
-import "./globals.css";
+import { siteMetadata } from '@/lib/site-metadata';
+import Header from './_components/header';
+import './globals.css';
+import Container from './_components/container';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
-export const metadata: Metadata = {
-  title: `Next.js Blog Example with ${CMS_NAME}`,
-  description: `A statically generated blog example using Next.js and ${CMS_NAME}.`,
+export const metadata = {
+  metadataBase: new URL(siteMetadata.siteUrl),
+  title: {
+    template: `%s | ${siteMetadata.title}`,
+    default: siteMetadata.title, // a default is required when creating a template
+  },
+  description: siteMetadata.description,
   openGraph: {
-    images: [HOME_OG_IMAGE_URL],
+    title: siteMetadata.title,
+    description: siteMetadata.description,
+    url: siteMetadata.siteUrl,
+    siteName: siteMetadata.title,
+    // images: [siteMetadata.socialBanner],
+    locale: 'en_US',
+    type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteMetadata.title,
+    // images: [siteMetadata.socialBanner],
   },
 };
 
@@ -21,44 +49,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/favicon/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon/favicon-16x16.png"
-        />
-        <link rel="manifest" href="/favicon/site.webmanifest" />
-        <link
-          rel="mask-icon"
-          href="/favicon/safari-pinned-tab.svg"
-          color="#000000"
-        />
-        <link rel="shortcut icon" href="/favicon/favicon.ico" />
-        <meta name="msapplication-TileColor" content="#000000" />
-        <meta
-          name="msapplication-config"
-          content="/favicon/browserconfig.xml"
-        />
-        <meta name="theme-color" content="#000" />
-        <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-      </head>
+    <html lang='en'>
       <body className={inter.className}>
-        <div className="min-h-screen">{children}</div>
-        <Footer />
+        <div className='container mx-auto bg-light dark:bg-dark'>
+          <Header />
+          <Container>
+            <div className='min-h-screen'>{children}</div>
+          </Container>
+          {/* <Footer /> */}
+        </div>
       </body>
+      <GoogleAnalytics gaId='G-STT7FP2FPK' />
     </html>
   );
 }

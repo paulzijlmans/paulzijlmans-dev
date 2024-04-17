@@ -1,13 +1,22 @@
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
+import logoImg from '/public/logo.svg';
 
 const Header = () => {
   return (
-    <h2 className="text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8">
-      <Link href="/" className="hover:underline">
-        Blog
+    <header className='w-full flex justify-between items-center p-5'>
+      <Link href='/'>
+        <div className='w-24 md:w-32'>
+          <Image
+            src={logoImg}
+            alt='Paul Zijlmans Logo'
+            className='w-full h-auto'
+            sizes='20vw'
+            priority
+          />
+        </div>
       </Link>
-      .
-    </h2>
+    </header>
   );
 };
 
