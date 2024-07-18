@@ -4,7 +4,8 @@
     "dev": "next",
     "build": "next build",
     "postbuild": "next-sitemap",
-    "start": "next start"
+    "start": "next start",
+    "deploy": "vercel --prod"
   },
   "dependencies": {
     "@next/third-parties": "^14.2.4",
