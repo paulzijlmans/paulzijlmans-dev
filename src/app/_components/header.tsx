@@ -4,9 +4,9 @@ import logoImg from '/public/logo.svg';
 
 const Header = () => {
   return (
-    <header className='w-full flex justify-between items-center p-5'>
+    <header className='w-full flex justify-between items-center px-5 py-2.5'>
       <Link href='/'>
-        <div className='w-24 md:w-32'>
+        <div className='w-15 md:w-32'>
           <Image
             src={logoImg}
             alt='Paul Zijlmans Logo'

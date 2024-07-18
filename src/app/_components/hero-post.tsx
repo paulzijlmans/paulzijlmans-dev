@@ -22,7 +22,7 @@ export function HeroPost({ title, coverImage, date, excerpt, slug }: Props) {
               <div className='mb-3 md:mb-0 text-sm font-semibold text-accent-1'>
                 <DateFormatter dateString={date} />
               </div>
-              <h3 className='mb-3 text-2xl font-semibold lg:text-5xl dark:text-white leading-tight hover:underline'>
+              <h3 className='mb-3 text-lg font-semibold lg:text-3xl dark:text-white leading-tight hover:underline'>
                 {title}
               </h3>
             </div>

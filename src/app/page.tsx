@@ -11,8 +11,8 @@ export default function Index() {
 
   return (
     <>
-      <h1 className='text-3xl md:text-4xl font-bold dark:text-white tracking-tighter leading-tight md:leading-none mb-6 text-center'>
-        Blog
+      <h1 className='text-2xl md:text-4xl font-semibold dark:text-white tracking-tighter leading-tight md:leading-none mb-6'>
+        Blog posts
       </h1>
       <HeroPost
         title={heroPost.title}

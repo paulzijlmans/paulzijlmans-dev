@@ -15,7 +15,7 @@ export function PostHeader({ title, coverImage, date }: Props) {
       <div className='mb-6 text-center'>
         <CoverImage title={title} src={coverImage} />
       </div>
-      <div className='mb-3 text-lg font-semibold text-accent-1'>
+      <div className='mb-3 text-md font-semibold text-accent-1'>
         <DateFormatter dateString={date} />
       </div>
     </div>
