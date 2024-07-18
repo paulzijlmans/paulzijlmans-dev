@@ -1,6 +1,6 @@
 ---
 title: "Manage Your Java Versions with SDKMAN!"
-excerpt: "..."
+excerpt: "You can easily install and switch between Java versions using SDKMAN! It allows for setting a default version and switching to a specific version for a particular project."
 coverImage: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
 publishedAt: "2024-07-18"
 ogImage:
